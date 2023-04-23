@@ -1,8 +1,4 @@
-import hashlib
-
 from mapper_reducer import Mapper
-
-
 class word_count_Mapper(Mapper):
     def mapper(self):
         with open('output.txt','r') as file:

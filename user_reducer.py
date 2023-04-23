@@ -1,12 +1,14 @@
 from reducer import Reducer
+import inspect
 
 
 class UserReducer(Reducer):
     def reducer(self):
-        x=Reducer.get(self)
-        print(x)
+        print("")
+       
+        
 
 
 
-x=UserReducer()
-x.reducer()
+x=Reducer()
+print(x.items)
