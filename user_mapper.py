@@ -32,7 +32,7 @@ class word_count_Mapper(Mapper):
             categories[category_num].append(item)
 
 
-        print(categories)
+        return categories
 
 
 riten= word_count_Mapper()
@@ -44,3 +44,4 @@ riten.mapper()
 
 
 
+ 
