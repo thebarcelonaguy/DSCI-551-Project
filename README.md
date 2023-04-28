@@ -22,11 +22,11 @@ To install and run this project, follow these steps:
 
 1. Clone the repository:
 
-git clone https://github.com/__/DSCI-551-Project.git
+`git clone https://github.com/__/DSCI-551-Project.git`
 
 2. Run the program:
 
-python main.py input_file output_file reducer_count
+`python main.py input_file output_file reducer_count`
 
 Where `input_file` is the path to the input file, and `output_file` is the desired output file name.
 
