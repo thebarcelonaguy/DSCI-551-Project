@@ -28,9 +28,15 @@ To install and run this project, follow these steps:
 
 2. Run the program:
 
+`main.py` takes the following arguments.
+
 `python main.py input.txt output_file_name reducer_count`
 
-Where `input.txt` is the `input_file` provided, `output_file` is the desired output file name, and `reducer_count` is the number of reducers that the user wants.
+The output files generated are from the below sample run of our code.
+
+`python main.py input.txt output.txt 4`
+
+Where `input.txt` is the `input_file` provided, `output.txt` is the desired output file name, and `4` is the number of reducers.
 
 ## Usage
 
