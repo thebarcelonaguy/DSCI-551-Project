@@ -1,43 +1,62 @@
-from user_mapper import word_count_Mapper
-from collections import defaultdict
-
-
-x=word_count_Mapper()
-data=x.mapper()
+import os
 
 class Reducer:
-    def __init__(self):
-        self.items = []
+    def __init__(self, input_file):
+        """
+        Initializes a new Reducer object with the given input file path.
 
-    def reduce(self, item):
-        self.items.extend(item)
-    
+        :param input_file: the path to the input file
+        """
+        self.input_file = input_file
+        
+    def get_input_file(self):
+        """
+        Returns the path to the input file.
+
+        :return: the path to the input file
+        """
+        return self.input_file
 
 
-num_categories = 5  # number of categories
-reducers = [Reducer() for i in range(num_categories)]  # create N reducer instances
+class UserReducer(Reducer):
+    def __init__(self, input_file):
+        """
+        Initializes a new UserReducer object with the given input file path.
+        This class extends the Reducer class.
+
+        :param input_file: the path to the input file
+        """
+        super().__init__(input_file)
+        
+    def word_count(self):
+        """
+        Counts the occurrences of each word in the input file, and writes the result to an output file.
+
+        The output file is located in a directory called 'reducer_output', which is created if it does not exist.
+        The output file has the same name as the input file, but with the 'reducer_output' directory path and '.txt'
+        extension appended to it.
+
+        Each line in the output file has the format 'word,count', where 'word' is a word in the input file and
+        'count' is the number of occurrences of that word.
+
+        :return: None
+        """
+        word_counts = {}
+        with open(self.input_file, 'r') as file:
+            for line in file:
+                word, count = line.strip().split(',')
+                if word in word_counts:
+                    word_counts[word] += int(count)
+                else:
+                    word_counts[word] = int(count)
+
+        reducer_output_dir = "reducer_output"
+        if not os.path.exists(reducer_output_dir):
+            os.makedirs(reducer_output_dir)
+
+        output_file = os.path.join(reducer_output_dir, os.path.basename(self.input_file))
+        with open(output_file, 'w') as file:
+            for word, count in word_counts.items():
+                file.write(f"{word},{count}\n")
 
 
-for key,value in data.items():
-    reducers[key].reduce(value)
-
-
-word_count_list = []
-
-for i, reducer in enumerate(reducers):
-    hashMap = {}
-    word_list = reducer.items
-    word_dict = {}
-    word_count = defaultdict(int)
-    # convert the list of key-value pairs to a dictionary
-    for key, value in word_list:
-        word_dict[key] = word_dict.get(key, 0) + value
-        # count the number of occurrences of each word
-    for word in word_dict:
-        word_count[word] += word_dict[word]
-        # convert the dictionary to a list of tuples and sort by the word count
-    ans = sorted(word_count.items(), key=lambda x: x[1], reverse=True)
-   # print("R" + str(i) + " " + str(ans))
-    word_count_list.extend(ans)
-
-#print(word_count_list)

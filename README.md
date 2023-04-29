@@ -14,6 +14,8 @@ The following components are included in this implementation:
 - **reducer_server.py**: Sets up multiple reducer servers that can process the data in parallel.
 - **data_shuffler.py**: Distributes the intermediate key-value pairs across the reducer servers based on the partitioning. The output of this component is a set of key-value pairs.
 - **data_grouper.py**: It sorts the data and initiates the reducer function on each server and groups them together into the final output.
+- **job_tracker.py**: It creates the tasks and assigns it to TaskTracker.
+- **task_tracker.py**: It calls the required functions and executes the task.
 
 
 ## Installation
