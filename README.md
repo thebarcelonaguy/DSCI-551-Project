@@ -30,7 +30,7 @@ To install and run this project, follow these steps:
 
 `python main.py input.txt output_file_name reducer_count`
 
-Where `input.txt` is the 'input_file` provided, `output_file` is the desired output file name, and `reducer_count` is the number of reducers that the user wants.
+Where `input.txt` is the `input_file` provided, `output_file` is the desired output file name, and `reducer_count` is the number of reducers that the user wants.
 
 ## Usage
 
